@@ -33,6 +33,23 @@ This project demonstrates how to use an ESP32 microcontroller with a DHT22 tempe
 5. Connect the DHT22 sensor and LED to the ESP32 as per the pin configurations in the code.
 6. Compile and upload the code to your ESP32 board.
 
+## Homeassistant Setup
+
+```
+mqtt:
+  sensor:
+    - name: "TemperaturaEsterna"
+      unique_id: "TemperaturaEsterna"
+      state_topic: "home/external/sensor"
+      unit_of_measurement: "°C"
+      value_template: "{{ value_json.temperature }}"
+    - name: "UmiditaEsterna"
+      unique_id: "UmiditaEsterna"
+      state_topic: "home/external/sensor"
+      unit_of_measurement: "%"
+      value_template: "{{ value_json.humidity }}"
+```
+
 ## Usage
 
 1. Once uploaded, the ESP32 will connect to the specified WiFi network.
